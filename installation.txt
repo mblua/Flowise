@@ -1,0 +1,1 @@
+La única que funcionó fue con docker. Las demás locales no funcionó ninguna. 

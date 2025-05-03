@@ -1,0 +1,1 @@
+docker run -d -p 3000:3000 -v D:/flowise-data:/root/.flowise --name flowise flowiseai/flowise
