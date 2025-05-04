@@ -1,0 +1,87 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "af4ae9bf-c9c4-4fcc-bf63-ee9f7714a938",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "limit": 1,
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "e75bb8aa-e244-4828-8778-d2894836a02d",
+      "name": "Gmail",
+      "webhookId": "486674bb-ca7a-46ea-b543-fe5b5e1a2aa0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "SBmsMPezCXDA9tAs",
+          "name": "Gmail: mariano.blua@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n\n  console.log(\"Asunto:\", item.json.subject);\n  console.log(\"Remitente:\", item.json.from);\n  console.log(\"Mensaje:\", item.json.text);  // o `item.json.html`\n\n\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "e324b908-1672-4545-b54c-ac984d81b0ad",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "65852321-eb3b-4ab8-9ded-a6a4d8c5b664",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4e06ca47e0e096aa2f89ff0cb49a14cf1ca7e529e93e2848247cb3a0704c68bc"
+  },
+  "id": "h0Vp95lVDp1XNJno",
+  "tags": []
+}
