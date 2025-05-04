@@ -1,36 +1,6 @@
 {
-  "name": "SAMPLE - Gmail Inbox review",
+  "name": "SAMPLE___Gmail_Inbox_review",
   "nodes": [
-    {
-      "parameters": {
-        "pollTimes": {
-          "item": [
-            {
-              "mode": "everyHour",
-              "minute": 5
-            }
-          ]
-        },
-        "filters": {
-          "labelIds": [],
-          "q": "-label:\"Sent Emails\" -label:\"AI_v1\""
-        }
-      },
-      "type": "n8n-nodes-base.gmailTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        0,
-        -40
-      ],
-      "id": "6d25323c-d7c4-49ed-938b-1e042a91ca1e",
-      "name": "Gmail Trigger",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "SBmsMPezCXDA9tAs",
-          "name": "Gmail: mariano.blua@gmail.com"
-        }
-      }
-    },
     {
       "parameters": {
         "inputText": "=Subject:  {{ $json.Subject }}\nEmail Body: {{ $json.snippet }}",
@@ -55,10 +25,10 @@
       "type": "@n8n/n8n-nodes-langchain.textClassifier",
       "typeVersion": 1,
       "position": [
-        220,
-        -40
+        -380,
+        200
       ],
-      "id": "00fabe63-3d5e-45b1-bd89-0d42e0658878",
+      "id": "e7fb67f3-d7d9-43e5-93be-a499d2bee814",
       "name": "Text Classifier"
     },
     {
@@ -74,15 +44,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        308,
-        180
+        -300,
+        420
       ],
-      "id": "4669df59-ad68-41f8-89a8-524d1158f88e",
+      "id": "91082e8d-93bc-49ad-a1e7-f510dcf512ea",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "DhQr2s2uFtBQf31l",
-          "name": "OpenAi account"
+          "id": "aBqdnzUObK4BEGMa",
+          "name": "OpenAi account N8N-LOCAL-TEST2"
         }
       }
     },
@@ -98,16 +68,16 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        600,
-        -240
+        0,
+        0
       ],
-      "id": "2620fa2d-6757-42f3-aff2-c7d1a4d69a84",
+      "id": "8650f933-39b0-4cce-9f7d-bd86d89172af",
       "name": "AI_v1 -> Not Important",
       "webhookId": "8579ad13-d881-417a-b867-683c237972c9",
       "credentials": {
         "gmailOAuth2": {
-          "id": "SBmsMPezCXDA9tAs",
-          "name": "Gmail: mariano.blua@gmail.com"
+          "id": "NO1iXO9jk9JI5Y61",
+          "name": "Gmail account"
         }
       }
     },
@@ -123,16 +93,16 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        600,
-        -40
+        0,
+        200
       ],
-      "id": "43f202a5-47ee-42d8-b34f-91efae34b75f",
+      "id": "2f8dbdcd-948e-44ee-88ef-38b7a7cc628f",
       "name": "AI_v1 -> Important",
       "webhookId": "ab5a5707-20c5-4201-a3d1-de6a51d935c4",
       "credentials": {
         "gmailOAuth2": {
-          "id": "SBmsMPezCXDA9tAs",
-          "name": "Gmail: mariano.blua@gmail.com"
+          "id": "NO1iXO9jk9JI5Y61",
+          "name": "Gmail account"
         }
       }
     },
@@ -148,16 +118,16 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        600,
-        160
+        0,
+        400
       ],
-      "id": "ba73c847-103f-4831-a937-57b05c784516",
+      "id": "79ce1cf3-c64a-4a7b-9ae7-f8c86decf475",
       "name": "AI_v1 -> Unknown",
       "webhookId": "497c4ff7-ac61-4bd6-9376-2dd246d6e64b",
       "credentials": {
         "gmailOAuth2": {
-          "id": "SBmsMPezCXDA9tAs",
-          "name": "Gmail: mariano.blua@gmail.com"
+          "id": "NO1iXO9jk9JI5Y61",
+          "name": "Gmail account"
         }
       }
     },
@@ -173,16 +143,16 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        820,
-        -240
+        220,
+        0
       ],
-      "id": "32a992fc-c9ee-41db-82ff-d73566774cb7",
+      "id": "c4ccfeca-a1c3-4e6d-8699-1c099f6963ba",
       "name": "Remove INBOX",
       "webhookId": "368e04c3-84bc-4202-b20b-4bfc09a6b17d",
       "credentials": {
         "gmailOAuth2": {
-          "id": "SBmsMPezCXDA9tAs",
-          "name": "Gmail: mariano.blua@gmail.com"
+          "id": "NO1iXO9jk9JI5Y61",
+          "name": "Gmail account"
         }
       }
     },
@@ -198,33 +168,66 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        820,
-        -40
+        220,
+        200
       ],
-      "id": "d248588c-b8f7-44fa-8d09-e51f8d164689",
+      "id": "5b1a85ae-d685-4bf3-8416-d053155806a7",
       "name": "Add INBOX",
       "webhookId": "8ee86319-5087-4c71-bcab-03b8339c2a35",
       "credentials": {
         "gmailOAuth2": {
-          "id": "SBmsMPezCXDA9tAs",
-          "name": "Gmail: mariano.blua@gmail.com"
+          "id": "NO1iXO9jk9JI5Y61",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -900,
+        200
+      ],
+      "id": "e404ed2e-9f5f-497d-ba5e-360f3a58ef96",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "limit": 1,
+        "filters": {
+          "q": "-label:\"Sent Emails\" -label:\"AI_v1\""
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -680,
+        200
+      ],
+      "id": "5deafbc3-f0a9-441c-b54d-b3e5429b468a",
+      "name": "Gmail",
+      "webhookId": "8872850f-6f64-422e-92ee-7cb4e3d38628",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "NO1iXO9jk9JI5Y61",
+          "name": "Gmail account"
         }
       }
     }
   ],
   "pinData": {},
   "connections": {
-    "Gmail Trigger": {
-      "main": [
-        [
-          {
-            "node": "Text Classifier",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "OpenAI Chat Model": {
       "ai_languageModel": [
         [
@@ -293,17 +296,39 @@
           }
         ]
       ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "844e8c1b-1f2b-44c6-8cfe-04d71530e0db",
+  "versionId": "6e79bdc4-34af-443f-b852-f9e9c508ff72",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "4e06ca47e0e096aa2f89ff0cb49a14cf1ca7e529e93e2848247cb3a0704c68bc"
+    "instanceId": "ecc2048cec7da5e6ae1446db4455a9ddeae09ac04e7717e6a0ba018dbd499efd"
   },
-  "id": "KYqQYZoiGyncZDoR",
+  "id": "SELtNiuclPveFM7p",
   "tags": []
 }
