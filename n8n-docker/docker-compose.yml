@@ -13,3 +13,4 @@ services:
       - N8N_BASIC_AUTH_PASSWORD=MegaSecretPassword1*
     volumes:
       - ./n8n_data:/home/node/.n8n
+      - ./home_node:/home/node/
